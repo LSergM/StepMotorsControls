@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<project>
+  <fileVersion>2</fileVersion>
+  <fileChecksum>34227646</fileChecksum>
+  <configuration>
+    <name>Debug</name>
+    <outputs>
+      <file>$PROJ_DIR$\eemem.c</file>
+      <file>$TOOLKIT_DIR$\src\template\cfgm8a.xcl</file>
+      <file>$PROJ_DIR$\main.c</file>
+      <file>$PROJ_DIR$\modbus.c</file>
+      <file>$PROJ_DIR$\pwm_pcb.c</file>
+      <file>$PROJ_DIR$\un_drebezg.c</file>
+      <file>$TOOLKIT_DIR$\inc\bitdefinitions\iom8a.inc</file>
+      <file>$TOOLKIT_DIR$\inc\iom8a.h</file>
+      <file>$TOOLKIT_DIR$\lib\dlib\dlAVR-1s-ec_mul-n.h</file>
+      <file>$TOOLKIT_DIR$\lib\dlib\dlAVR-1s-ec_mul-n.r90</file>
+      <file>$PROJ_DIR$\headers\un_drebezg.h</file>
+      <file>$PROJ_DIR$\Debug\Exe\pwm_modbus.dbg</file>
+      <file>$PROJ_DIR$\Debug\Obj\main.pbi</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Defaults.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\eemem.r90</file>
+      <file>$TOOLKIT_DIR$\inc\iomacro.h</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\c\stdint.h</file>
+      <file>$TOOLKIT_DIR$\inc\intrinsics.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\modbus.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\pwm_modbus.pbd</file>
+      <file>$TOOLKIT_DIR$\src\template\cfg1soim.xcl</file>
+      <file>$PROJ_DIR$\Debug\Obj\un_drebezg.pbi</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\c\xencoding_limits.h</file>
+      <file>$TOOLKIT_DIR$\src\template\cfgm8.xcl</file>
+      <file>$PROJ_DIR$\Debug\Obj\un_drebezg.r90</file>
+      <file>$TOOLKIT_DIR$\inc\ioavr.h</file>
+      <file>$TOOLKIT_DIR$\inc\inavr.h</file>
+      <file>$PROJ_DIR$\Debug\Exe\pwm_modbus.d90</file>
+      <file>$PROJ_DIR$\Debug\Exe\pwm_modbus.hex</file>
+      <file>$TOOLKIT_DIR$\src\template\cfg1toim.xcl</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\c\ycheck.h</file>
+      <file>$PROJ_DIR$\headers\modbus.h</file>
+      <file>$TOOLKIT_DIR$\lib\clib\cl1t-ec_mul.r90</file>
+      <file>$PROJ_DIR$\headers\eemem.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\eemem.pbi</file>
+      <file>$PROJ_DIR$\headers\pwm_pcb.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\main.r90</file>
+      <file>$PROJ_DIR$\headers\delay.h</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Product.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\pwm_pcb.r90</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\c\DLib_Threads.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\pwm_pcb.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\modbus.r90</file>
+      <file>$PROJ_DIR$\headers\main.h</file>
+      <file>$TOOLKIT_DIR$\inc\dlib\c\yvals.h</file>
+    </outputs>
+    <file>
+      <name>$PROJ_DIR$\eemem.c</name>
+      <outputs>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 14</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 34</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 33 25 7 15 6 17</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 33 25 7 15 6 17</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\main.c</name>
+      <outputs>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 36</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 12</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 43 37 26 17 25 7 15 6 16 30 44 13 8 38 22 40 33 31 35 10</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 43 37 26 17 25 7 15 6 16 30 44 13 38 22 40 33 31 35 10</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\modbus.c</name>
+      <outputs>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 42</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 18</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 31 25 7 15 6 35 33 17</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 31 25 7 15 6 35 33 17</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\pwm_pcb.c</name>
+      <outputs>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 39</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 41</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 35 25 7 15 6</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 35 25 7 15 6</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\un_drebezg.c</name>
+      <outputs>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 24</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 21</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 10 35 25 7 15 6</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 10 35 25 7 15 6</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Debug\Exe\pwm_modbus.dbg</name>
+      <outputs>
+        <tool>
+          <name>XLINK</name>
+          <file> 28</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>XLINK</name>
+          <file> 1 20 14 36 42 39 24 9</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Debug\Obj\pwm_modbus.pbd</name>
+      <inputs>
+        <tool>
+          <name>BILINK</name>
+          <file> 34 12 18 41 21</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Debug\Exe\pwm_modbus.d90</name>
+      <inputs>
+        <tool>
+          <name>XLINK</name>
+          <file> 23 29 14 36 42 39 24 32</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>[ROOT_NODE]</name>
+      <outputs>
+        <tool>
+          <name>XLINK</name>
+          <file> 11 28</file>
+        </tool>
+      </outputs>
+    </file>
+  </configuration>
+  <configuration>
+    <name>Release</name>
+    <outputs>
+      <file>$PROJ_DIR$\eemem.c</file>
+      <file>$PROJ_DIR$\main.c</file>
+      <file>$PROJ_DIR$\modbus.c</file>
+      <file>$PROJ_DIR$\pwm_pcb.c</file>
+      <file>$PROJ_DIR$\un_drebezg.c</file>
+      <file>$TOOLKIT_DIR$\inc\intrinsics.h</file>
+      <file>$TOOLKIT_DIR$\inc\ioavr.h</file>
+      <file>$PROJ_DIR$\Release\Obj\main.pbi</file>
+      <file>$PROJ_DIR$\Release\Obj\modbus.pbi</file>
+      <file>$PROJ_DIR$\Release\Exe\pwm_modbus.hex</file>
+      <file>$PROJ_DIR$\Release\Obj\eemem.pbi</file>
+      <file>$PROJ_DIR$\Release\Obj\pwm_modbus.pbd</file>
+      <file>$PROJ_DIR$\Release\Obj\main.r90</file>
+      <file>$PROJ_DIR$\Release\Obj\pwm_pcb.r90</file>
+      <file>$PROJ_DIR$\Release\Obj\eemem.r90</file>
+      <file>$PROJ_DIR$\Release\Obj\un_drebezg.r90</file>
+      <file>$PROJ_DIR$\Release\Obj\modbus.r90</file>
+      <file>$PROJ_DIR$\Release\Obj\pwm_pcb.pbi</file>
+      <file>$PROJ_DIR$\Release\Obj\un_drebezg.pbi</file>
+    </outputs>
+    <file>
+      <name>$PROJ_DIR$\eemem.c</name>
+      <outputs>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 14</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 10</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\main.c</name>
+      <outputs>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 12</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 7</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 6 5</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\modbus.c</name>
+      <outputs>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 16</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 8</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\pwm_pcb.c</name>
+      <outputs>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 13</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 17</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\un_drebezg.c</name>
+      <outputs>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 15</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 18</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>[ROOT_NODE]</name>
+      <outputs>
+        <tool>
+          <name>XLINK</name>
+          <file> 9</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Release\Obj\pwm_modbus.pbd</name>
+      <inputs>
+        <tool>
+          <name>BILINK</name>
+          <file> 10 7 8 17 18</file>
+        </tool>
+      </inputs>
+    </file>
+    <forcedrebuild>
+      <name>[MULTI_TOOL]</name>
+      <tool>XLINK</tool>
+    </forcedrebuild>
+  </configuration>
+</project>
+
+

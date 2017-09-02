@@ -1,0 +1,6 @@
+Docs/
+HOME_0004_PWM_MODEL_01/IAR_mega8/Release/
+HOME_0004_PWM_MODEL_01/IAR_mega8/Debug/
+HOME_0004_PWM_MODEL_01/IAR_mega8/settings/
+*.o
+*.bak
