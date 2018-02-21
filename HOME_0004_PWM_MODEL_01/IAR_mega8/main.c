@@ -9,10 +9,12 @@
 
 unsigned char fl=0,ch=0, fadc=0, tch=0;
 unsigned int nn=0, n1=0, tadc=0;
+uint8_t microStep = 0;
 uint16_t steps_drv = 0;
 uint16_t position = 0;
 
-const uint16_t DELAY_OF_START = 100;
+const uint16_t DELAY_OF_START        = 100;
+const uint16_t GO_TO_INIT_POSITION   = 0xFFFF;
 const uint8_t  IS_NOT_HOME_POSITION  = 0;
 const uint8_t  IS_HOME_POSITION      = 1;
 
@@ -23,6 +25,8 @@ uint16_t MedianFilter(uint16_t datum, uint8_t nch);
 void update_drv(void);
 void UpdateFaultState(void);
 uint8_t CheckHomePosition(void);
+uint8_t SizeOfStep(void);
+void UpdatePosition(void);
 
 void main( void )
 {
@@ -31,6 +35,7 @@ void main( void )
   uint8_t sp = 0;
   uint8_t delstart = 0;  
   
+   
   InitCPU();
 
   __enable_interrupt();
@@ -62,12 +67,7 @@ void main( void )
       if (steps_drv && (delstart >= DELAY_OF_START))
       {                
         if(IS_NOT_HOME_POSITION == CheckHomePosition())
-        {      
-          if(steps_drv) 
-          {
-            steps_drv--;
-          }
-          
+        {                
           if(sp)
           {
             SET_STEP_PORT_ON;
@@ -77,26 +77,10 @@ void main( void )
           {
             SET_STEP_PORT_OFF;
             sp = 1;
-          }
-          
-          if (0xFFFF != position)
-          {
-            if( D_pc.ModBUS_r_reg[DRV_STATE] & (1 << DRV_DIR) )
-            {
-              if (position >= D_pc.ModBUS_rw_reg[SIZE_STEP])
-              {
-                position = position - D_pc.ModBUS_rw_reg[SIZE_STEP];
-              }
-//                    else 
-//                      while(1);
-            }
-            else
-            {
-              position = position + D_pc.ModBUS_rw_reg[SIZE_STEP];
-            }
-          }                
-        }
-      }            
+            UpdatePosition();            
+          }                  
+        } 
+      }
     }
     
     D_pc.ModBUS_r_reg[CURRENT_POSITION] = position;
@@ -143,19 +127,45 @@ void main( void )
   }  
 }
 
+void UpdatePosition(void)
+{        
+    if (++microStep >= SizeOfStep())
+    {
+      microStep = 0;
+      steps_drv--;
+      
+      if (GO_TO_INIT_POSITION != position)
+      {
+        if( D_pc.ModBUS_r_reg[DRV_STATE] & (1 << DRV_DIR) )
+        {
+          if (0 != position)
+          {
+            position--;
+          }
+        }
+        else
+        {
+          position++;
+        }
+      }
+    }                                                          
+}
+
 uint8_t CheckHomePosition(void)
 {
   if (    !(Test_IN_0.fin & (1 << END_STOP)) 
-      &&   (D_pc.ModBUS_r_reg[DRV_STATE] & (1 << DRV_DIR)) 
-  )          
+      &&   (D_pc.ModBUS_r_reg[DRV_STATE] & (1 << DRV_DIR))  )          
   {
     steps_drv = 0;
     position  = 0;
+    microStep = 0;
     
     return IS_HOME_POSITION;
   }
-  
-  return IS_NOT_HOME_POSITION;
+  else
+  {
+    return IS_NOT_HOME_POSITION;
+  }
 }
 
 void UpdateFaultState(void)
@@ -173,31 +183,30 @@ void UpdateFaultState(void)
 void update_drv(void)
 {
     uint8_t fwree = 1;
-  
-    D_pc.ModBUS_rw_reg[SIZE_STEP] = D_pc.ModBUS_rw_reg[SIZE_STEP] & 0x00FF;
-    
+          
     if (D_pc.ModBUS_rw_reg[DRV_CTRL])
     {
       if (D_pc.ModBUS_rw_reg[DRV_CTRL] <= MAX_STEP)
       {
-        if (D_pc.ModBUS_rw_reg[DRV_CTRL] > D_pc.ModBUS_rw_reg[MAX_POSITION])
+        uint16_t newPosition = D_pc.ModBUS_rw_reg[DRV_CTRL];
+        
+        if (newPosition > D_pc.ModBUS_rw_reg[MAX_POSITION])
         {
-          D_pc.ModBUS_rw_reg[DRV_CTRL] = D_pc.ModBUS_rw_reg[MAX_POSITION];
+          newPosition = D_pc.ModBUS_rw_reg[MAX_POSITION];
         }
         
-        if (position != D_pc.ModBUS_rw_reg[DRV_CTRL])
+        if (position != newPosition)
         {
-          if(D_pc.ModBUS_rw_reg[SIZE_STEP])
+          if(0 != SizeOfStep())
           {
-             steps_drv = D_pc.ModBUS_rw_reg[DRV_CTRL] * 10;          
-             if (position > steps_drv)
+             if (position > newPosition)
              {
-               steps_drv = (position - steps_drv)/D_pc.ModBUS_rw_reg[SIZE_STEP];
+               steps_drv = (position - newPosition);
                D_pc.ModBUS_r_reg[DRV_STATE] |= (1 << DRV_DIR);
              }
              else
              {
-               steps_drv = (steps_drv - position)/D_pc.ModBUS_rw_reg[SIZE_STEP];
+               steps_drv = (newPosition - position);
                D_pc.ModBUS_r_reg[DRV_STATE] &= ~(1 << DRV_DIR);
              }
           }
@@ -331,6 +340,35 @@ void update_drv(void)
           SET_DRV_RST_OFF;
     }    
 }
+uint8_t SizeOfStep(void)
+{
+  uint8_t size_of_step;
+        
+  size_of_step = ( (D_pc.ModBUS_r_reg[DRV_STATE] >> DRV_M0) & DRV_MASK_SIZE_STEP );
+
+  switch(size_of_step)
+  {
+    case 0:
+      size_of_step = 1;
+      break;
+    case 1:
+      size_of_step = 2;
+      break;
+    case 2:
+      size_of_step = 4;
+      break;
+    case 3:
+      size_of_step = 8;
+      break;
+    case 4:
+      size_of_step = 16;      
+      break;
+    default:
+      size_of_step = 32;    
+      break;
+  }
+  return size_of_step;
+}
 
 void InitCPU(void)
 {
@@ -376,7 +414,7 @@ void InitCPU(void)
     D_pc.ModBUS_rw_reg[DRV_CTRL] = CMD_GOOD;  
     update_drv();
     steps_drv = 511;
-    position = 0xFFFF;
+    position = GO_TO_INIT_POSITION;
     
     TCCR1B |= (1 << CS11);  //Старт ШИМ
     ADCSR  |= (1 << ADEN) | (1 << ADSC);    

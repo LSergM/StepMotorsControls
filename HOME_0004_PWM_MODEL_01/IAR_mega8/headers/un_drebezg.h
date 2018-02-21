@@ -10,6 +10,7 @@ struct Data_IN {
     unsigned char ckey0[INn]; //8 ???
     unsigned char ckey1[INn]; //8 ???
 };
+
 extern struct Data_IN Test_IN_0;
 
 extern void Test_Drebezg_IN(void);

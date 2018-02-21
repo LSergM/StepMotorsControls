@@ -721,7 +721,7 @@
         </option>
         <option>
           <name>OutputFile</name>
-          <state>pwm_modbus.dbg</state>
+          <state>pwm_modbus.d90</state>
         </option>
         <option>
           <name>OutputFormat</name>
@@ -787,7 +787,7 @@
         </option>
         <option>
           <name>XclFile</name>
-          <state>$TOOLKIT_DIR$\src\template\cfgm8.xcl</state>
+          <state>$TOOLKIT_DIR$\src\template\cfgm8a.xcl</state>
         </option>
         <option>
           <name>XclFileSlave</name>
@@ -879,7 +879,7 @@
         </option>
         <option>
           <name>DebugInformation</name>
-          <state>1</state>
+          <state>0</state>
         </option>
         <option>
           <name>RuntimeControl</name>

@@ -38,6 +38,7 @@
     #define DRV_M0         13   //Регистр состояния драйвера
     #define DRV_M1         14   //Регистр состояния драйвера
     #define DRV_M2         15U   //Регистр состояния драйвера
+        #define DRV_MASK_SIZE_STEP         7U   //Mask_of_size_of_step
 #define STATE_IN       4
 #define CURRENT_POSITION       5
 
